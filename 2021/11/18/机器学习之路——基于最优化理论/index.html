@@ -9,7 +9,7 @@
     
     <title>
         
-            归档 |
+            机器学习——基于最优化理论 |
         
         Keep Theme
     </title>
@@ -67,7 +67,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 归档
@@ -95,7 +95,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives">归档</a>
                 </li>
             
@@ -115,73 +115,146 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="archive-container ">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">机器学习——基于最优化理论</span>
+        </div>
+
         
-<div class="archive-list-container">
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Keep Team</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-11-18 21:22:14
+    </span>
     
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">[7]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%80%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA/"
-                        >机器学习——基于最优化理论</a>
-                        <span class="article-date">11-18</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%942/"
-                        >机器学习之路——2</a>
-                        <span class="article-date">11-18</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/17/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%941/"
-                        >机器学习之路——1</a>
-                        <span class="article-date">11-17</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/14/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%883%EF%BC%89/"
-                        >Hexo+GitHub个人博客搭建（3）</a>
-                        <span class="article-date">11-14</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/10/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%882%EF%BC%89/"
-                        >Hexo+GitHub个人博客搭建（2）</a>
-                        <span class="article-date">11-10</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/10/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%881%EF%BC%89/"
-                        >Hexo+GitHub个人博客搭建（1）</a>
-                        <span class="article-date">11-10</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/11/10/hello-world/"
-                        >Hello World</a>
-                        <span class="article-date">11-10</span>
-                    </li>
-                
-            </ul>
-        </section>
+    
+
+    
+    
+    
     
 </div>
 
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3>基于最优化理论</h3>
+
+
+<p>假设对于任意一条分开o和×这两类的直线，我们把这条直线向一侧平行移动直到它和一个或几个训练样本相交为止。同时，我们也把这条直线向另一侧平行移动直到它和一个或几个训练样本相交为止，结果如图所示：</p>
+
+
+
+<img style="height:300px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/12.png">
+
+<p>我们把相交的直线交它的<b>支持向量</b>，两条直接距离交<b>间隔</b>,支持向量机要找的是<b>间隔最大</b>并且这条直线<b>在上下两条平行线的中间</b>的那一条直线。</p>
+<p>所以，支持向量机寻找最优分类直线应满足：</p>
+<ol>
+    <li>该直线分开了两类；</li>
+    <li>该直线最大化间隔；</li>
+    <li>该直线处于间隔的中间，到所有支持向量距离相等。</li>
+</ol>
+
+<p>同理，支持向量机寻找最优分类超平面应满足：</p>
+<ol>
+    <li>该超平面分开了两类；</li>
+    <li>该超平面最大化间隔；</li>
+    <li>该超平面处于间隔的中间，到所有支持向量距离相等。</li>
+</ol>
+
+<hr>
+<h3>支持向量机（优化问题）</h3>
+
+<h5>1)线性可分</h5>
+
+<p>假定训练样本集是线性可分的。</p>
+<p>支持向量机需要寻找的是最大化间隔(MARGIN)的超平面，这个优化问题可以写成如下形式：</p>
+<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/13.png">
+
+<p>在最小化：1/2||w||<sup>2</sup>这里</p>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/14.png">
+
+<p>因为w是一个向量，假设它有m个分量，分布为w<sub>1</sub>,w<sub>2</sub>,...,w<sub>m</sub>,那么<img style="height:50px"  src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/15.png"></p>
+
+<p>它的限制条件：    y<sup>i</sup>(w<sup>T</sup>x<sub>i</sub>&nbsp;+&nbsp;b) &gt;=1,(i=1~N)</p>
+<hr>
+<p><b>已知：</b></p>
+<p>训练样本集{(X<sub>i</sub>,Y<sub>i</sub>)}，i=1到N；</p>
+<p><b>待求：</b>（w，b）</p>
+<p>现要推出支持向量机要找一个超平面，使它的间隔最大这个优化问题，我们需要注意以下2个事实：</p>
+<p><b>事实1</b></p>
+<img style="height:80px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/16.png">
+
+<p><b>事实2</b></p>
+<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/17.png">
+
+<p>基于事实1：</p>
+<p>​            用 a 去缩放 w和b，得：</p>
+<img style="height:120px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/18.png">
+
+<p>因为(w ，b)表示的超平面和(a w ,ab)表示的超平面是同一个平面。</p>
+<p>即用参数a去缩放(w, b )</p>
+<p>基于事实2，支持向量x<sub>0</sub>到超平面的距离将会变为：</p>
+<img style="height:80px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/19.png">
+
+<p>由此可见，如果我们要最大化支持向量到超平面的距离→最小化||w||。</p>
+ <p> 我们把优化问题定为：最小化：1/2||w||<sup>2</sup>和最小化：||w||是一样的，只是方便后面求导。</p>
+
+<hr>
+<p>现在我们再看限制条件：<br>支持向量到超平面距离为1/||w||，其他非支持向量到超平面距离大于支持向量到超平面距离。</p>
+<p>因此，在非支持向量 上|w<sup>T</sup>X<sub>0</sub>+b|&gt;1</p>
+<p>综合两者，我们可以写出限制条件为：</p>
+<img style="height:50px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/21.png">
+
+<p>其中y<sub>i</sub>的作用是协调超平面的左右，让一边的(w<sup>T</sup>x+b)&gt;1,另一边的(w<sup>T</sup>x+b)&lt;1。（右边1可以改为任意一个常数。）</p>
+<h5>3)线性不可分</h5>
+
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/11/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%942/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">机器学习之路——2</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
+
 
                 
             </div>
@@ -211,6 +284,19 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
