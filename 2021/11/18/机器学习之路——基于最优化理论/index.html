@@ -160,7 +160,7 @@
 
 
 
-<img style="height:300px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/12.png">
+<img style="height:300px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/01.png">
 
 <p>我们把相交的直线交它的<b>支持向量</b>，两条直接距离交<b>间隔</b>,支持向量机要找的是<b>间隔最大</b>并且这条直线<b>在上下两条平行线的中间</b>的那一条直线。</p>
 <p>所以，支持向量机寻找最优分类直线应满足：</p>
@@ -184,12 +184,12 @@
 
 <p>假定训练样本集是线性可分的。</p>
 <p>支持向量机需要寻找的是最大化间隔(MARGIN)的超平面，这个优化问题可以写成如下形式：</p>
-<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/13.png">
+<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/02.png">
 
 <p>在最小化：1/2||w||<sup>2</sup>这里</p>
-<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/14.png">
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/03.png">
 
-<p>因为w是一个向量，假设它有m个分量，分布为w<sub>1</sub>,w<sub>2</sub>,...,w<sub>m</sub>,那么<img style="height:50px"  src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/15.png"></p>
+<p>因为w是一个向量，假设它有m个分量，分布为w<sub>1</sub>,w<sub>2</sub>,...,w<sub>m</sub>,那么<img style=""></p>
 
 <p>它的限制条件：    y<sup>i</sup>(w<sup>T</sup>x<sub>i</sub>&nbsp;+&nbsp;b) &gt;=1,(i=1~N)</p>
 <hr>
@@ -198,19 +198,19 @@
 <p><b>待求：</b>（w，b）</p>
 <p>现要推出支持向量机要找一个超平面，使它的间隔最大这个优化问题，我们需要注意以下2个事实：</p>
 <p><b>事实1</b></p>
-<img style="height:80px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/16.png">
+<img style="height:80px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/04.png">
 
 <p><b>事实2</b></p>
-<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/17.png">
+<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/05.png">
 
 <p>基于事实1：</p>
 <p>​            用 a 去缩放 w和b，得：</p>
-<img style="height:120px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/18.png">
+<img style="height:120px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/06.png">
 
 <p>因为(w ，b)表示的超平面和(a w ,ab)表示的超平面是同一个平面。</p>
 <p>即用参数a去缩放(w, b )</p>
 <p>基于事实2，支持向量x<sub>0</sub>到超平面的距离将会变为：</p>
-<img style="height:80px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/19.png">
+<img style="height:80px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/07.png">
 
 <p>由此可见，如果我们要最大化支持向量到超平面的距离→最小化||w||。</p>
  <p> 我们把优化问题定为：最小化：1/2||w||<sup>2</sup>和最小化：||w||是一样的，只是方便后面求导。</p>
@@ -220,7 +220,7 @@
 <p>现在我们再看限制条件：<br>支持向量到超平面距离为1/||w||，其他非支持向量到超平面距离大于支持向量到超平面距离。</p>
 <p>因此，在非支持向量 上|w<sup>T</sup>X<sub>0</sub>+b|&gt;1</p>
 <p>综合两者，我们可以写出限制条件为：</p>
-<img style="height:50px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/21.png">
+<img style="height:50px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/08.png">
 
 <p>其中y<sub>i</sub>的作用是协调超平面的左右，让一边的(w<sup>T</sup>x+b)&gt;1,另一边的(w<sup>T</sup>x+b)&lt;1。（右边1可以改为任意一个常数。）</p>
 <hr>
@@ -230,25 +230,25 @@
 <p>那么如何放松限制条件呢？</p>
 <p>对每个训练样本及标签（X<sub>i</sub>,Y<sub>i</sub>）,我们需要设置一个松弛变量δ<sub>i</sub></p>
 <p>那么我们就可以将限制条件：</p>
-<img style="height:50px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/21.png">
+<img style="height:50px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/08.png">
 
 <p>放松为：</p>
-<img style="width:600px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgs/deepstudy01.png">
+<img style="width:600px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/09.png">
 
 <p>在线性不可分的情况下，我们无法要求所有的限制条件：<strong>y<sup>i</sup>(w<sup>T</sup>x<sub>i</sub>&nbsp;+&nbsp;b)&gt;=1</strong>的。所以我们引入松弛变量δ<sub>i</sub>，只要<strong>每个δ<sub>i</sub>取的足够的大</strong>，那么N个不等式的限制条件一定是可以成立的。</p>
 <p>我们还需要加入一些新的限制，让松弛变量不会无限的扩大，让其限定在一个合理的范围之内。</p>
 <p>改造后的支持向量机优化版本为：</p>
-<img height="130px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgs/deepstudy02.png">
+<img height="130px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/10.png">
 
 <p>观察上方目标函数，线性可分时只需要最小化1/2||w||<sup>2</sup>,而现在的目标函数增加了一项所有δ<sub>i</sub>的和。</p>
 <p>这里的比例因子C是人为设定的参数<span style="color:red"><strong>(</strong></span>认为设定的参数叫做算法的超参数<span style="color:red"><strong>)</strong></span>，它起到了<strong>平衡两项</strong>的作用。</p>
 <p>这里我举个例子：</p>
 <p>在线性不可分的情况下应用支持向量机时，取目标函数：</p>
-<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgs/deepstudy03.png">
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/11.png">
 
 <p>在这中，我们取C为一个很大的数10000，这样会尽量的迫使所有的松弛变量趋近于0，使得最终解出来的超平面和线性可分情况下保持一致。</p>
 <p>下图是训练数据以及解出的分类面的展示：</p>
-<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgs/deepstudy04.png">
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/12.png">
 
 <p>这个分类面分开的大多数的o和×，但是这个解不能让人满意，它分错了将近一半的训练样本。</p>
 <p>为什么？</p>
