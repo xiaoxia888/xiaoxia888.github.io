@@ -9,6 +9,8 @@
     
     <title>
         
+            Linux中MySQL的安装 |
+        
         GuoXi&#39; Blog
     </title>
     
@@ -129,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation"></span>
+            <span class="title-hover-animation">Linux中MySQL的安装</span>
         </div>
 
         
@@ -147,7 +149,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-12-09 21:59:55
+        <i class="fas fa-edit"></i>&nbsp;2021-12-19 19:16:50
     </span>
     
     
@@ -164,7 +166,67 @@
         
 
         <div class="article-content markdown-body">
-            <img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/2.jpg">
+            <h3>首先我们要查看是否已经安装过Mysql</h3>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm –qa | grep -i mysql</span><br></pre></td></tr></table></figure>
+
+
+
+<h3>yum命令安装：需要保证在联网的情况下</h3>
+
+<h4>1、进入root终端</h4>
+
+<h4>2、下载MySQL官方版本5.7.14</h4>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -i -c wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/mysqlinstall/01.jpg"></img></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/mysqlinstall/02.jpg"></img></p>
+<h4>3、安装</h4>
+
+<p>输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mysql57-community-release-el7-10.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>效果如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/mysqlinstall/03.jpg"></img></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/mysqlinstall/04.jpg"></img></p>
+<h4>4、安装MySQL服务器</h4>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure>
+
+<p> 安装完成，接下来进行配置</p>
+<p>1、启动mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld.service</span><br></pre></td></tr></table></figure>
+
+<p>2、查看mysql运行状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld.service</span><br></pre></td></tr></table></figure>
+
+<p>3、此时mysql已经正常运行，想进入mysql还得找到root用户的密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;password&quot; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
+
+<p>4、登录数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<p>此处可能登录不了，一直报错</p>
+<p>ERROR 1045 (28000): Access denied for user ‘root‘@’localhost’ (using password: YES)</p>
+<p>可以将数据库改为无密码登录状态</p>
+<p>编辑 etc下的 my.cnf 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vi /etc/my.cnf</span><br></pre></td></tr></table></figure>
+
+<p>在文件末尾添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skip-grant-tables</span><br></pre></td></tr></table></figure>
+
+<p>保存退出</p>
+<p><strong>重启数据库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart </span><br></pre></td></tr></table></figure>
+
+<p>打开数据库 (登录本机)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p </span><br></pre></td></tr></table></figure>
+
+<p>登录其他主机的mysql，这边需要保证改数据库已经设置了可以远程访问</p>
+<p>mysql -h 主机名或IP地址 -u 用户名 -p 用户密码</p>
+<p>退出数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit   /   quit</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -389,7 +451,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">首先我们要查看是否已经安装过Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">yum命令安装：需要保证在联网的情况下</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">1、进入root终端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">2、下载MySQL官方版本5.7.14</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">3、安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">4、安装MySQL服务器</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
