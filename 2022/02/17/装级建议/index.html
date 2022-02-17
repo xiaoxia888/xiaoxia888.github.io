@@ -9,7 +9,7 @@
     
     <title>
         
-            Linux中MySQL的安装 |
+            装机建议 |
         
         GuoXi&#39; Blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Linux中MySQL的安装</span>
+            <span class="title-hover-animation">装机建议</span>
         </div>
 
         
@@ -149,8 +149,19 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-12-19 19:16:50
+        <i class="fas fa-edit"></i>&nbsp;2022-02-17 11:11:11
     </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
     
 
@@ -166,67 +177,33 @@
         
 
         <div class="article-content markdown-body">
-            <h3>首先我们要查看是否已经安装过Mysql</h3>
+            <h3>推荐1</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm –qa | grep -i mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL I5 10400f 6 核心 12线程</span><br><span class="line">主板：微星 B560M-A-PRO</span><br><span class="line">内存：威刚XPG 游戏威龙8G3200*2 205</span><br><span class="line">固态：影驰黑将 PRO 500G M.2</span><br><span class="line">显卡：影驰 RTX3050 8G 大将</span><br><span class="line">机箱：爱国者 YOGO M2 黑色</span><br><span class="line">电源：撒哈拉海盗额定500W</span><br><span class="line">散热：耕升风力一号</span><br><span class="line">合计：4999</span><br></pre></td></tr></table></figure>
 
+<h3>推荐2</h3>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL 15 1140OF 6/12=960</span><br><span class="line">主板：微星 B56OM-A-PRO=549</span><br><span class="line">内存：威刚 8G 3200 XPG 游戏威龙*2=215*2</span><br><span class="line">固态：影驰黑将 PRO 500G M.2=299</span><br><span class="line">显卡：华硕显卡/ATS-RTX3060-012G-GAMING (SSL巨齿鲨双风扇2*HDMI+3*DP)4188</span><br><span class="line">电源：全汉GT500W铜牌质保五年=249</span><br><span class="line">散热：爱国者冰封RGB4铜管=80</span><br><span class="line">机箱：爱国者 YOGOM2=179</span><br><span class="line">总价：6934</span><br></pre></td></tr></table></figure>
 
-<h3>yum命令安装：需要保证在联网的情况下</h3>
+<h3>推荐3</h3>
 
-<h4>1、进入root终端</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL 15 12400F 6/12=1189</span><br><span class="line">主板：华硕B660M-K =750</span><br><span class="line">内存：英睿达铂胜8G 3200*2=219*2</span><br><span class="line">固态：三星PM9A1512G NVMEM.2=480</span><br><span class="line">显卡：七彩虹 RTX 3060 12GULTRA WOC = 4199</span><br><span class="line">电源：全汉GT600W铜牌炫动质保五年=299</span><br><span class="line">散热：利民AX120 R SE ARGB 5v=89</span><br><span class="line">机箱：爱国者 YOGOM2黑色=179</span><br><span class="line">合计：7620</span><br></pre></td></tr></table></figure>
 
-<h4>2、下载MySQL官方版本5.7.14</h4>
+<h3>推荐4</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -i -c wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL 15 1140OF 6/12=960</span><br><span class="line">主板：微星B56OM-A-PRO=549</span><br><span class="line">内存：威刚8G 3200 XP 加子Xox龙*2=215*2</span><br><span class="line">固态：影驰黑将PRO 500G M.2=299</span><br><span class="line">显卡：华硕显卡/ATS-RTX3060-012G-GAMING (SSL 巨齿鲨双风扇2*HDMI+3*DP)4188</span><br><span class="line">电源：全汉GT5oovV 一年=249</span><br><span class="line">散热：爱国者冰封RGB4铜管=80</span><br><span class="line">机箱：爱国者YOGOM2 =179AOC Q27V3 2K =1280</span><br><span class="line">总价：8214</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/mysqlinstall/01.jpg"></img></p>
-<p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/mysqlinstall/02.jpg"></img></p>
-<h4>3、安装</h4>
+<h3>推荐5</h3>
 
-<p>输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mysql57-community-release-el7-10.noarch.rpm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL 15 12400F 6/12=1189</span><br><span class="line">主板：华硕B660M-K =750</span><br><span class="line">内存：英睿达铂胜8G 3200*2=219*2</span><br><span class="line">固态：影驰黑将PRO 500G M.2=299</span><br><span class="line">显卡：七彩虹 RTX 306012GULTRA WOC = 4199</span><br><span class="line">电源：全汉GT600W铜牌炫动质保五年=299</span><br><span class="line">散热：利民AX120 R SE ARGB 5v=89</span><br><span class="line">机箱：爱国者YOGOM2黑色=179 </span><br><span class="line">显示器:AOC Q27G2 27寸直面144HZ 2K =1650</span><br><span class="line">合计：9090</span><br></pre></td></tr></table></figure>
 
-<p>效果如下图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/mysqlinstall/03.jpg"></img></p>
-<p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/mysqlinstall/04.jpg"></img></p>
-<h4>4、安装MySQL服务器</h4>
+<h3>推荐6</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：i5 12600kf=1860</span><br><span class="line">主板：华硕z690-p d4 =1599</span><br><span class="line">显卡：影驰 RTX3070TI星耀永劫无间oc=6450</span><br><span class="line">内存：英睿达16g*2 3200=199*2</span><br><span class="line">电源：海盗船 RM1000X金牌全模=1050</span><br><span class="line">机箱：影驰超新星=275</span><br><span class="line">散热：微星C360 360一体水冷=549</span><br><span class="line">固态：sn750se 1t =655</span><br><span class="line">总价：12836</span><br></pre></td></tr></table></figure>
 
-<p> 安装完成，接下来进行配置</p>
-<p>1、启动mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld.service</span><br></pre></td></tr></table></figure>
+<h3>推荐7</h3>
 
-<p>2、查看mysql运行状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status mysqld.service</span><br></pre></td></tr></table></figure>
-
-<p>3、此时mysql已经正常运行，想进入mysql还得找到root用户的密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;password&quot; /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-
-<p>4、登录数据库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-
-<p>此处可能登录不了，一直报错</p>
-<p>ERROR 1045 (28000): Access denied for user ‘root‘@’localhost’ (using password: YES)</p>
-<p>可以将数据库改为无密码登录状态</p>
-<p>编辑 etc下的 my.cnf 文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vi /etc/my.cnf</span><br></pre></td></tr></table></figure>
-
-<p>在文件末尾添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">skip-grant-tables</span><br></pre></td></tr></table></figure>
-
-<p>保存退出</p>
-<p><strong>重启数据库</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart </span><br></pre></td></tr></table></figure>
-
-<p>打开数据库 (登录本机)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p </span><br></pre></td></tr></table></figure>
-
-<p>登录其他主机的mysql，这边需要保证改数据库已经设置了可以远程访问</p>
-<p>mysql -h 主机名或IP地址 -u 用户名 -p 用户密码</p>
-<p>退出数据库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit   /   quit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL l7 12700KF =2399</span><br><span class="line">主板：微星主板/PRO Z690-ADDR4 (HDMI+DP+4*M.2)=1450</span><br><span class="line">内存：海盗船复仇者8G 3600*2=239*2</span><br><span class="line">固态：三星PM9A1 1T M.2=825</span><br><span class="line">显卡：七彩虹RTX3080 10G Advanced OC 次旗舰=8199</span><br><span class="line">电源：海盗船 RM750金牌全模组质保十年=699</span><br><span class="line">散热：利民360 5v argb 一体式水冷=439</span><br><span class="line">机箱：安钛克复仇者×=399</span><br><span class="line">总价：14888</span><br></pre></td></tr></table></figure>
 
 
         </div>
@@ -236,29 +213,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/02/17/%E8%A3%85%E7%BA%A7%E5%BB%BA%E8%AE%AE/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">装机建议</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/12/09/valueof%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                           href="/2021/12/19/Linux%E4%B8%ADmysql%E7%9A%84%E5%AE%89%E8%A3%85/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">valueof的使用</span>
+                                <span class="post-nav-title-item">Linux中MySQL的安装</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -466,7 +428,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">首先我们要查看是否已经安装过Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">yum命令安装：需要保证在联网的情况下</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">1、进入root终端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">2、下载MySQL官方版本5.7.14</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">3、安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">4、安装MySQL服务器</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">推荐1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">推荐2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">推荐3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">推荐4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">推荐5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">推荐6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">推荐7</span></a></li></ol>
     </div>
 </div>
         </aside>
