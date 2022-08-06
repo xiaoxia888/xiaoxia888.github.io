@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="关于Mybatis底层参数的传递和@Param注释的使用">
+    <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="GuoXi">
     
     <title>
         
-            Mybatis底层参数传递 |
+            装机建议 |
         
         GuoXi&#39; Blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Mybatis底层参数传递</span>
+            <span class="title-hover-animation">装机建议</span>
         </div>
 
         
@@ -149,7 +149,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-23 00:00:00
+        <i class="fas fa-edit"></i>&nbsp;2022-08-06 11:27:21
     </span>
     
         <span class="article-categories article-meta-item">
@@ -157,7 +157,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Javaweb/">Javaweb</a>&nbsp;
+                        <a href="/categories/%E7%A1%AC%E4%BB%B6/">硬件</a>&nbsp;
                     </li>
                 
             </ul>
@@ -177,30 +177,34 @@
         
 
         <div class="article-content markdown-body">
-            <h3>单个参数</h3>
+            <h3>推荐1</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.POJO类型：直接使用，属性名和参数占位符名称一致</span><br><span class="line">2.Map集合：直接使用，键名和参数占位符名称一致</span><br><span class="line">3.collection集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,collection集合);</span><br><span class="line">    map.put(&quot;collection&quot;,collection集合);</span><br><span class="line">4.list集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,List集合);</span><br><span class="line">    map.put(&quot;collection&quot;,List集合);</span><br><span class="line">    map.put(&quot;list&quot;,list集合);</span><br><span class="line"> 5.Array：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,数组);</span><br><span class="line">    map.put(&quot;Array&quot;,数组);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL I5 10400f 6 核心 12线程</span><br><span class="line">主板：微星 B560M-A-PRO</span><br><span class="line">内存：威刚XPG 游戏威龙8G3200*2 205</span><br><span class="line">固态：影驰黑将 PRO 500G M.2</span><br><span class="line">显卡：影驰 RTX3050 8G 大将</span><br><span class="line">机箱：爱国者 YOGO M2 黑色</span><br><span class="line">电源：撒哈拉海盗额定500W</span><br><span class="line">散热：耕升风力一号</span><br><span class="line">合计：4999</span><br></pre></td></tr></table></figure>
 
-<h3>多个参数</h3>
+<h3>推荐2</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">多个参数：mybatis会将这些参数封装为一个Map集合(param),@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">* map.put(&quot;arg0&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* map.put(&quot;arg1&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL 15 1140OF 6/12=960</span><br><span class="line">主板：微星 B56OM-A-PRO=549</span><br><span class="line">内存：威刚 8G 3200 XPG 游戏威龙*2=215*2</span><br><span class="line">固态：影驰黑将 PRO 500G M.2=299</span><br><span class="line">显卡：华硕显卡/ATS-RTX3060-012G-GAMING (SSL巨齿鲨双风扇2*HDMI+3*DP)4188</span><br><span class="line">电源：全汉GT500W铜牌质保五年=249</span><br><span class="line">散热：爱国者冰封RGB4铜管=80</span><br><span class="line">机箱：爱国者 YOGOM2=179</span><br><span class="line">总价：6934</span><br></pre></td></tr></table></figure>
 
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* map.put(&quot;@Param注解替换的键名&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* ap.put(&quot;@Param注解替换的键名&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+<h3>推荐3</h3>
 
-<p><strong>例如</strong></p>
-<p>xxxMapper.java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL 15 12400F 6/12=1189</span><br><span class="line">主板：华硕B660M-K =750</span><br><span class="line">内存：英睿达铂胜8G 3200*2=219*2</span><br><span class="line">固态：三星PM9A1512G NVMEM.2=480</span><br><span class="line">显卡：七彩虹 RTX 3060 12GULTRA WOC = 4199</span><br><span class="line">电源：全汉GT600W铜牌炫动质保五年=299</span><br><span class="line">散热：利民AX120 R SE ARGB 5v=89</span><br><span class="line">机箱：爱国者 YOGOM2黑色=179</span><br><span class="line">合计：7620</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">List&lt;Brand&gt; selectByCondition(int id,String companyName)</span><br><span class="line">使用@Param注释后</span><br><span class="line">List&lt;Brand&gt; selectByCondition(@Param(&quot;status&quot;) int id,@Param(&quot;companyName&quot;)String companyName)</span><br></pre></td></tr></table></figure>
+<h3>推荐4</h3>
 
-<p>xxxMapper.xml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL 15 1140OF 6/12=960</span><br><span class="line">主板：微星B56OM-A-PRO=549</span><br><span class="line">内存：威刚8G 3200 XP 加子Xox龙*2=215*2</span><br><span class="line">固态：影驰黑将PRO 500G M.2=299</span><br><span class="line">显卡：华硕显卡/ATS-RTX3060-012G-GAMING (SSL 巨齿鲨双风扇2*HDMI+3*DP)4188</span><br><span class="line">电源：全汉GT5oovV 一年=249</span><br><span class="line">散热：爱国者冰封RGB4铜管=80</span><br><span class="line">机箱：爱国者YOGOM2 =179AOC Q27V3 2K =1280</span><br><span class="line">总价：8214</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">	select *</span><br><span class="line">	from tb_brand</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">	&lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">		status = #&#123;arg0&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg1!=null and arg1!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and company_name like #&#123;arg1&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg2!=null and arg2!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and brand_name like #&#123;arg2&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3>推荐5</h3>
 
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释后</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">        select *</span><br><span class="line">        from tb_brand</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">        &lt;if test=&quot;status!=null&quot;&gt;</span><br><span class="line">             status = #&#123;status&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;companyName!=null and companyName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">             and company_name like #&#123;companyName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;brandName!=null and brandName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">            and brand_name like #&#123;brandName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL 15 12400F 6/12=1189</span><br><span class="line">主板：华硕B660M-K =750</span><br><span class="line">内存：英睿达铂胜8G 3200*2=219*2</span><br><span class="line">固态：影驰黑将PRO 500G M.2=299</span><br><span class="line">显卡：七彩虹 RTX 306012GULTRA WOC = 4199</span><br><span class="line">电源：全汉GT600W铜牌炫动质保五年=299</span><br><span class="line">散热：利民AX120 R SE ARGB 5v=89</span><br><span class="line">机箱：爱国者YOGOM2黑色=179 </span><br><span class="line">显示器:AOC Q27G2 27寸直面144HZ 2K =1650</span><br><span class="line">合计：9090</span><br></pre></td></tr></table></figure>
 
-<p>建议使用@Param注释，可以提高代码可读性</p>
+<h3>推荐6</h3>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：i5 12600kf=1860</span><br><span class="line">主板：华硕z690-p d4 =1599</span><br><span class="line">显卡：影驰 RTX3070TI星耀永劫无间oc=6450</span><br><span class="line">内存：英睿达16g*2 3200=199*2</span><br><span class="line">电源：海盗船 RM1000X金牌全模=1050</span><br><span class="line">机箱：影驰超新星=275</span><br><span class="line">散热：微星C360 360一体水冷=549</span><br><span class="line">固态：sn750se 1t =655</span><br><span class="line">总价：12836</span><br></pre></td></tr></table></figure>
+
+<h3>推荐7</h3>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CPU：INTEL l7 12700KF =2399</span><br><span class="line">主板：微星主板/PRO Z690-ADDR4 (HDMI+DP+4*M.2)=1450</span><br><span class="line">内存：海盗船复仇者8G 3600*2=239*2</span><br><span class="line">固态：三星PM9A1 1T M.2=825</span><br><span class="line">显卡：七彩虹RTX3080 10G Advanced OC 次旗舰=8199</span><br><span class="line">电源：海盗船 RM750金牌全模组质保十年=699</span><br><span class="line">散热：利民360 5v argb 一体式水冷=439</span><br><span class="line">机箱：安钛克复仇者×=399</span><br><span class="line">总价：14888</span><br></pre></td></tr></table></figure>
+
 
         </div>
 
@@ -212,18 +216,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/08/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%882%EF%BC%89/"
+                           href="/2022/08/06/%E8%BD%AF%E8%80%83%E5%8A%A0%E6%B2%B9/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Hexo+GitHub个人博客搭建（2）</span>
+                                <span class="post-nav-title-item">软考加油！！！</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/06/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%80%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">机器学习——基于最优化理论</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
@@ -424,7 +443,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">单个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">多个参数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">推荐1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">推荐2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">推荐3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">推荐4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">推荐5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">推荐6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">推荐7</span></a></li></ol>
     </div>
 </div>
         </aside>

@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="关于Mybatis底层参数的传递和@Param注释的使用">
+    <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="GuoXi">
     
     <title>
         
-            Mybatis底层参数传递 |
+            机器学习——基于最优化理论 |
         
         GuoXi&#39; Blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Mybatis底层参数传递</span>
+            <span class="title-hover-animation">机器学习——基于最优化理论</span>
         </div>
 
         
@@ -149,7 +149,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-23 00:00:00
+        <i class="fas fa-edit"></i>&nbsp;2022-08-06 11:27:21
     </span>
     
         <span class="article-categories article-meta-item">
@@ -157,7 +157,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Javaweb/">Javaweb</a>&nbsp;
+                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;
                     </li>
                 
             </ul>
@@ -177,30 +177,108 @@
         
 
         <div class="article-content markdown-body">
-            <h3>单个参数</h3>
+            <h3>基于最优化理论</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.POJO类型：直接使用，属性名和参数占位符名称一致</span><br><span class="line">2.Map集合：直接使用，键名和参数占位符名称一致</span><br><span class="line">3.collection集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,collection集合);</span><br><span class="line">    map.put(&quot;collection&quot;,collection集合);</span><br><span class="line">4.list集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,List集合);</span><br><span class="line">    map.put(&quot;collection&quot;,List集合);</span><br><span class="line">    map.put(&quot;list&quot;,list集合);</span><br><span class="line"> 5.Array：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,数组);</span><br><span class="line">    map.put(&quot;Array&quot;,数组);</span><br></pre></td></tr></table></figure>
 
-<h3>多个参数</h3>
+<p>假设对于任意一条分开o和×这两类的直线，我们把这条直线向一侧平行移动直到它和一个或几个训练样本相交为止。同时，我们也把这条直线向另一侧平行移动直到它和一个或几个训练样本相交为止，结果如图所示：</p>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">多个参数：mybatis会将这些参数封装为一个Map集合(param),@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">* map.put(&quot;arg0&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* map.put(&quot;arg1&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+
+
+<img style="height:300px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/01.png">
+
+<p>我们把相交的直线交它的<b>支持向量</b>，两条直接距离交<b>间隔</b>,支持向量机要找的是<b>间隔最大</b>并且这条直线<b>在上下两条平行线的中间</b>的那一条直线。</p>
+<p>所以，支持向量机寻找最优分类直线应满足：</p>
+<ol>
+    <li>该直线分开了两类；</li>
+    <li>该直线最大化间隔；</li>
+    <li>该直线处于间隔的中间，到所有支持向量距离相等。</li>
+</ol>
+
+<p>同理，支持向量机寻找最优分类超平面应满足：</p>
+<ol>
+    <li>该超平面分开了两类；</li>
+    <li>该超平面最大化间隔；</li>
+    <li>该超平面处于间隔的中间，到所有支持向量距离相等。</li>
+</ol>
 
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* map.put(&quot;@Param注解替换的键名&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* ap.put(&quot;@Param注解替换的键名&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+<h3>支持向量机（优化问题）</h3>
 
-<p><strong>例如</strong></p>
-<p>xxxMapper.java</p>
+<h5>1)线性可分</h5>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">List&lt;Brand&gt; selectByCondition(int id,String companyName)</span><br><span class="line">使用@Param注释后</span><br><span class="line">List&lt;Brand&gt; selectByCondition(@Param(&quot;status&quot;) int id,@Param(&quot;companyName&quot;)String companyName)</span><br></pre></td></tr></table></figure>
+<p>假定训练样本集是线性可分的。</p>
+<p>支持向量机需要寻找的是最大化间隔(MARGIN)的超平面，这个优化问题可以写成如下形式：</p>
+<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/02.png">
 
-<p>xxxMapper.xml</p>
+<p>在最小化：1/2||w||<sup>2</sup>这里</p>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/03.png">
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">	select *</span><br><span class="line">	from tb_brand</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">	&lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">		status = #&#123;arg0&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg1!=null and arg1!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and company_name like #&#123;arg1&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg2!=null and arg2!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and brand_name like #&#123;arg2&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>因为w是一个向量，假设它有m个分量，分布为w<sub>1</sub>,w<sub>2</sub>,...,w<sub>m</sub>,那么<img style=""></p>
 
+<p>它的限制条件：    y<sup>i</sup>(w<sup>T</sup>x<sub>i</sub>&nbsp;+&nbsp;b) &gt;=1,(i=1~N)</p>
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释后</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">        select *</span><br><span class="line">        from tb_brand</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">        &lt;if test=&quot;status!=null&quot;&gt;</span><br><span class="line">             status = #&#123;status&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;companyName!=null and companyName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">             and company_name like #&#123;companyName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;brandName!=null and brandName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">            and brand_name like #&#123;brandName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p><b>已知：</b></p>
+<p>训练样本集{(X<sub>i</sub>,Y<sub>i</sub>)}，i=1到N；</p>
+<p><b>待求：</b>（w，b）</p>
+<p>现要推出支持向量机要找一个超平面，使它的间隔最大这个优化问题，我们需要注意以下2个事实：</p>
+<p><b>事实1</b></p>
+<img style="height:80px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/04.png">
 
-<p>建议使用@Param注释，可以提高代码可读性</p>
+<p><b>事实2</b></p>
+<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/05.png">
+
+<p>基于事实1：</p>
+<p>​            用 a 去缩放 w和b，得：</p>
+<img style="height:120px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/06.png">
+
+<p>因为(w ，b)表示的超平面和(a w ,ab)表示的超平面是同一个平面。</p>
+<p>即用参数a去缩放(w, b )</p>
+<p>基于事实2，支持向量x<sub>0</sub>到超平面的距离将会变为：</p>
+<img style="height:80px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/07.png">
+
+<p>由此可见，如果我们要最大化支持向量到超平面的距离→最小化||w||。</p>
+ <p> 我们把优化问题定为：最小化：1/2||w||<sup>2</sup>和最小化：||w||是一样的，只是方便后面求导。</p>
+
+
+
+<p>现在我们再看限制条件：<br>支持向量到超平面距离为1/||w||，其他非支持向量到超平面距离大于支持向量到超平面距离。</p>
+<p>因此，在非支持向量 上|w<sup>T</sup>X<sub>0</sub>+b|&gt;1</p>
+<p>综合两者，我们可以写出限制条件为：</p>
+<img style="height:50px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/08.png">
+
+<p>其中y<sub>i</sub>的作用是协调超平面的左右，让一边的(w<sup>T</sup>x+b)&gt;1,另一边的(w<sup>T</sup>x+b)&lt;1。（右边1可以改为任意一个常数。）</p>
+<hr>
+<h5>3)线性不可分</h5>
+
+<p>当训练样本集是线性不可分的时候，以上问题是没有解的，不存在w和b满足上面所有N个限制条件。这时，我们需要适当方式限制条件，使上面的追优化问题有解。</p>
+<p>那么如何放松限制条件呢？</p>
+<p>对每个训练样本及标签（X<sub>i</sub>,Y<sub>i</sub>）,我们需要设置一个松弛变量δ<sub>i</sub></p>
+<p>那么我们就可以将限制条件：</p>
+<img style="height:50px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/08.png">
+
+<p>放松为：</p>
+<img style="width:600px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/09.png">
+
+<p>在线性不可分的情况下，我们无法要求所有的限制条件：<strong>y<sup>i</sup>(w<sup>T</sup>x<sub>i</sub>&nbsp;+&nbsp;b)&gt;=1</strong>的。所以我们引入松弛变量δ<sub>i</sub>，只要<strong>每个δ<sub>i</sub>取的足够的大</strong>，那么N个不等式的限制条件一定是可以成立的。</p>
+<p>我们还需要加入一些新的限制，让松弛变量不会无限的扩大，让其限定在一个合理的范围之内。</p>
+<p>改造后的支持向量机优化版本为：</p>
+<img height="130px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/10.png">
+
+<p>观察上方目标函数，线性可分时只需要最小化1/2||w||<sup>2</sup>,而现在的目标函数增加了一项所有δ<sub>i</sub>的和。</p>
+<p>这里的比例因子C是人为设定的参数<span style="color:red"><strong>(</strong></span>认为设定的参数叫做算法的超参数<span style="color:red"><strong>)</strong></span>，它起到了<strong>平衡两项</strong>的作用。</p>
+<p>这里我举个例子：</p>
+<p>在线性不可分的情况下应用支持向量机时，取目标函数：</p>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/11.png">
+
+<p>在这中，我们取C为一个很大的数10000，这样会尽量的迫使所有的松弛变量趋近于0，使得最终解出来的超平面和线性可分情况下保持一致。</p>
+<p>下图是训练数据以及解出的分类面的展示：</p>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/12.png">
+
+<p>这个分类面分开的大多数的o和×，但是这个解不能让人满意，它分错了将近一半的训练样本。</p>
+<p>为什么？</p>
+<p>因为我们的<strong>算法模型是线性的</strong>，我们假设分开两类的函数是直线或超平面，我们是在一组直线或者超平面中选择最适合分开这两类数据的直线或者超平面，但是线性模型的表现力是不够的。</p>
+<p>在上述模型中，我们可以看出能分开这两组数据的是某种曲面如椭圆，而不是直线。</p>
+<p>因此，我们只有想办法扩大可选函数的范围，使它超越线性，才有可能应对复杂的线性不可分的问题。</p>
 
         </div>
 
@@ -212,18 +290,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/08/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%882%EF%BC%89/"
+                           href="/2022/08/06/%E8%A3%85%E7%BA%A7%E5%BB%BA%E8%AE%AE/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Hexo+GitHub个人博客搭建（2）</span>
+                                <span class="post-nav-title-item">装机建议</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/06/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%942/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">机器学习之路——2</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
@@ -424,7 +517,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">单个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">多个参数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">基于最优化理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">支持向量机（优化问题）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">2.0.1.</span> <span class="nav-text">1)线性可分</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">2.0.2.</span> <span class="nav-text">3)线性不可分</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>

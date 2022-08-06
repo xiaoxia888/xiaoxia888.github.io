@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="关于Mybatis底层参数的传递和@Param注释的使用">
+    <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="GuoXi">
     
     <title>
         
-            Mybatis底层参数传递 |
+            valueof的使用 |
         
         GuoXi&#39; Blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Mybatis底层参数传递</span>
+            <span class="title-hover-animation">valueof的使用</span>
         </div>
 
         
@@ -149,7 +149,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-23 00:00:00
+        <i class="fas fa-edit"></i>&nbsp;2022-08-06 11:27:21
     </span>
     
         <span class="article-categories article-meta-item">
@@ -157,7 +157,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Javaweb/">Javaweb</a>&nbsp;
+                        <a href="/categories/Java/">Java</a>&nbsp;
                     </li>
                 
             </ul>
@@ -177,30 +177,20 @@
         
 
         <div class="article-content markdown-body">
-            <h3>单个参数</h3>
+            <h3>1.由基本数据型态转换成String</h3>
+String 类别中已经提供了将基本数据型态转换成 String 的 static 方法 ，也就是 String.valueOf() 这个参数多载的方法
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.POJO类型：直接使用，属性名和参数占位符名称一致</span><br><span class="line">2.Map集合：直接使用，键名和参数占位符名称一致</span><br><span class="line">3.collection集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,collection集合);</span><br><span class="line">    map.put(&quot;collection&quot;,collection集合);</span><br><span class="line">4.list集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,List集合);</span><br><span class="line">    map.put(&quot;collection&quot;,List集合);</span><br><span class="line">    map.put(&quot;list&quot;,list集合);</span><br><span class="line"> 5.Array：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,数组);</span><br><span class="line">    map.put(&quot;Array&quot;,数组);</span><br></pre></td></tr></table></figure>
+<p>有以下几种</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">String.valueOf(boolean b) : 将 boolean 变量 b 转换成字符串</span><br><span class="line"></span><br><span class="line">String.valueOf(char c) : 将 char 变量 c 转换成字符串</span><br><span class="line"></span><br><span class="line">String.valueOf(char[] data) : 将 char 数组 data 转换成字符串</span><br><span class="line"></span><br><span class="line">String.valueOf(char[] data, int offset, int count) : 将 char 数组 data 中 由 data[offset] 开始取 count 个元素 转换成字符串</span><br><span class="line"></span><br><span class="line">String.valueOf(double d) : 将 double 变量 d 转换成字符串</span><br><span class="line"></span><br><span class="line">String.valueOf(<span class="built_in">float</span> f) : 将 <span class="built_in">float</span> 变量 f 转换成字符串</span><br><span class="line"></span><br><span class="line">String.valueOf(int i) : 将 int 变量 i 转换成字符串</span><br><span class="line"></span><br><span class="line">String.valueOf(long l) : 将 long 变量 l 转换成字符串</span><br><span class="line"></span><br><span class="line">String.valueOf(Object obj) : 将 obj 对象转换成 字符串, 等于 obj.toString()</span><br></pre></td></tr></table></figure>
 
-<h3>多个参数</h3>
+<p>用法如下:<br>　　int i = 10;<br>　　String str = String.valueOf(i);<br>　　这时候 str 就会是 “10”</p>
+<h3>2.由 String 转换成 数字的基本数据型态</h3>
+要将 String 转换成基本数据型态转 ，大多需要使用基本数据型态的包装类别
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">多个参数：mybatis会将这些参数封装为一个Map集合(param),@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">* map.put(&quot;arg0&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* map.put(&quot;arg1&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+<p>比如说 String 转换成 byte ，可以使用 Byte.parseByte(String s) ，这一类的方法如果无法将 s 分析 则会丢出 NumberFormatException</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">byte : Byte.parseByte(String s) : 将 s 转换成 byte</span><br><span class="line"></span><br><span class="line">Byte.parseByte(String s, int radix) : 以 radix 为基底 将 s 转换为 byte ，比如说 Byte.parseByte(“11”, 16) 会得到 17</span><br><span class="line"></span><br><span class="line">double : Double.parseDouble(String s) : 将 s 转换成 double</span><br><span class="line"></span><br><span class="line"><span class="built_in">float</span> : Double.parseFloat(String s) : 将 s 转换成 <span class="built_in">float</span></span><br><span class="line"></span><br><span class="line">int : Integer.parseInt(String s) : 将 s 转换成 int</span><br><span class="line"></span><br><span class="line">long : Long.parseLong(String s)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* map.put(&quot;@Param注解替换的键名&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* ap.put(&quot;@Param注解替换的键名&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
 
-<p><strong>例如</strong></p>
-<p>xxxMapper.java</p>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">List&lt;Brand&gt; selectByCondition(int id,String companyName)</span><br><span class="line">使用@Param注释后</span><br><span class="line">List&lt;Brand&gt; selectByCondition(@Param(&quot;status&quot;) int id,@Param(&quot;companyName&quot;)String companyName)</span><br></pre></td></tr></table></figure>
-
-<p>xxxMapper.xml</p>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">	select *</span><br><span class="line">	from tb_brand</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">	&lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">		status = #&#123;arg0&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg1!=null and arg1!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and company_name like #&#123;arg1&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg2!=null and arg2!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and brand_name like #&#123;arg2&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释后</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">        select *</span><br><span class="line">        from tb_brand</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">        &lt;if test=&quot;status!=null&quot;&gt;</span><br><span class="line">             status = #&#123;status&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;companyName!=null and companyName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">             and company_name like #&#123;companyName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;brandName!=null and brandName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">            and brand_name like #&#123;brandName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
-
-<p>建议使用@Param注释，可以提高代码可读性</p>
 
         </div>
 
@@ -212,18 +202,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/08/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%882%EF%BC%89/"
+                           href="/2022/08/06/Linux%E4%B8%ADmysql%E7%9A%84%E5%AE%89%E8%A3%85/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Hexo+GitHub个人博客搭建（2）</span>
+                                <span class="post-nav-title-item">Linux中MySQL的安装</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%881%EF%BC%89/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo+GitHub个人博客搭建（1）</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
@@ -424,7 +429,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">单个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">多个参数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1.由基本数据型态转换成String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2.由 String 转换成 数字的基本数据型态</span></a></li></ol>
     </div>
 </div>
         </aside>

@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="关于Mybatis底层参数的传递和@Param注释的使用">
+    <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="GuoXi">
     
     <title>
         
-            Mybatis底层参数传递 |
+            Hexo+GitHub个人博客搭建（1） |
         
         GuoXi&#39; Blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Mybatis底层参数传递</span>
+            <span class="title-hover-animation">Hexo+GitHub个人博客搭建（1）</span>
         </div>
 
         
@@ -149,19 +149,8 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-23 00:00:00
+        <i class="fas fa-edit"></i>&nbsp;2022-08-06 11:27:21
     </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/Javaweb/">Javaweb</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
 
@@ -177,30 +166,110 @@
         
 
         <div class="article-content markdown-body">
-            <h3>单个参数</h3>
+            <h3>node.js的下载</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.POJO类型：直接使用，属性名和参数占位符名称一致</span><br><span class="line">2.Map集合：直接使用，键名和参数占位符名称一致</span><br><span class="line">3.collection集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,collection集合);</span><br><span class="line">    map.put(&quot;collection&quot;,collection集合);</span><br><span class="line">4.list集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,List集合);</span><br><span class="line">    map.put(&quot;collection&quot;,List集合);</span><br><span class="line">    map.put(&quot;list&quot;,list集合);</span><br><span class="line"> 5.Array：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,数组);</span><br><span class="line">    map.put(&quot;Array&quot;,数组);</span><br></pre></td></tr></table></figure>
+<h4>前期准备</h4>
 
-<h3>多个参数</h3>
+<p>Node.js简介：</br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简单的说 Node.js就是运行在服务端的 JavaScript。Node.js是一个基于Chrome V8引擎的JavaScript运行环境。Node.js使用了一个事件驱动、非阻塞式I/O的模型，使其轻量又高效。Node.js的包管理器 npm，是全球最大的开源库生态系统。
+</p></div>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">多个参数：mybatis会将这些参数封装为一个Map集合(param),@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">* map.put(&quot;arg0&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* map.put(&quot;arg1&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+
+<p>打开官网下载链接:<a class="link"   target="_blank" rel="noopener" href="https://nodejs.org/en/download/ " >https://nodejs.org/en/download/<i class="fas fa-external-link-alt"></i></a></p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/5.4.png" width=700px height=450px> 
+
+
+
+<h4>开始安装</h4>
+
+<p>1.下载后双击".mis"文件，开始安装Node.js</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/1.2.png"> 
+
+<p>点击Next并勾选复选框进行下一步安装</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/1.3.png"> 
+
+<p>点击Next按钮</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/1.4.png"> 
+
+<p>修改目录后，点击Next按钮</p>
+
+ 
+
+<p>点击Install按钮</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/5.2.png"> 
+
+<p>安装完后点击Finish按钮完成安装</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/5.3.png"> 
+
+<p>至此Node.js已经安装完成，可以先进行下简单的测试安装是否成功了，后面还要进行环境配置
+在键盘按下win+R键，输入cmd，然后回车，打开cmd窗口,输入node -v、npm -v，出现版本号表名安装成功。</p>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/cmd.png" width=700px height=450px> 
+
+<p>安装完后的目录如下图所示：</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/2267589-261e36d32bc47133.png" width=700px height=450px> 
+
+<h4>环境配置</h4>
+
+<p>说明：这里的环境配置主要配置的是npm安装的全局模块所在的路径，以及缓存cache的路径，之所以要配置，是因为以后在执行类似：npm install express [-g] （后面的可选参数-g，g代表global全局安装的意思）的安装语句时，会将安装的模块安装到【C:\Users\用户名\AppData\Roaming\npm】路径中，占C盘空间。</br>例如：我希望将全模块所在路径和缓存路径放在我node.js安装的文件夹中，则在我安装的文件夹【D:\Develop\nodejs】下创建两个文件夹【node_global】及【node_cache】如下图：</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/cmd2.png" width=700px height=450px> 
+
+<p>创建完两个空文件夹之后，打开cmd命令窗口，输入</p>
 
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* map.put(&quot;@Param注解替换的键名&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* ap.put(&quot;@Param注解替换的键名&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
-
-<p><strong>例如</strong></p>
-<p>xxxMapper.java</p>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">List&lt;Brand&gt; selectByCondition(int id,String companyName)</span><br><span class="line">使用@Param注释后</span><br><span class="line">List&lt;Brand&gt; selectByCondition(@Param(&quot;status&quot;) int id,@Param(&quot;companyName&quot;)String companyName)</span><br></pre></td></tr></table></figure>
-
-<p>xxxMapper.xml</p>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">	select *</span><br><span class="line">	from tb_brand</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">	&lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">		status = #&#123;arg0&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg1!=null and arg1!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and company_name like #&#123;arg1&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg2!=null and arg2!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and brand_name like #&#123;arg2&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>npm config set prefix "你下载nodejs的位置\node_global"</br>npm config set cache "你下载nodejs的位置\node_cache"</p>
 
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释后</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">        select *</span><br><span class="line">        from tb_brand</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">        &lt;if test=&quot;status!=null&quot;&gt;</span><br><span class="line">             status = #&#123;status&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;companyName!=null and companyName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">             and company_name like #&#123;companyName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;brandName!=null and brandName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">            and brand_name like #&#123;brandName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/2267589-e22cf1b878275757.png" width=700px height=450px> 
 
-<p>建议使用@Param注释，可以提高代码可读性</p>
+<p>接下来设置环境变量，关闭cmd窗口，“我的电脑”-右键-“属性”-“高级系统设置”-“高级”-“环境变量”</p>
+
+<p>进入环境变量对话框，在【系统变量】下新建【NODE_PATH】，输入【D:\Develop\nodejs\node_global\node_modules】，将【用户变量】下的【Path】修改为【D:\Develop\nodejs\node_global】</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/5.png" width=700px height=600px> 
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/6.png" width=700px height=500px> 
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/7.png"> 
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/10.png"> 
+
+<h4>测试是否安装成功</h4>
+
+<p>win+R打开cmd，输入以下命令：
+    
+</p>
+
+<hr>
+<p>node -v</p>
+<p>npm -version</p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgGit/15.png"> 
+
+<p>出现版本号说明安装成功</p>
+
+
+
+<p>配置完后，安装个module测试下，我们就安装最常用的express模块，打开cmd窗口，
+输入如下命令进行模块的全局安装：</p>
+
+
+<hr>
+<p><span>npm install express -g</span></p>
+<hr>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/img/8.png" width=700px height=500px>  
+
+<p>如果出现像：</br>npm ERR! code EPERM</br>
+npm ERR! syscall mkdir</br>
+npm ERR! path D:\Develop\nodejs\node_cache\_cacache</br>
+npm ERR! errno -4048</br>的错误是你权限的问题，用管理员打开就好。</p>
 
         </div>
 
@@ -212,18 +281,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/08/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%882%EF%BC%89/"
+                           href="/2022/08/06/valueof%E7%9A%84%E4%BD%BF%E7%94%A8/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Hexo+GitHub个人博客搭建（2）</span>
+                                <span class="post-nav-title-item">valueof的使用</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%883%EF%BC%89/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo+GitHub个人博客搭建（3）</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
@@ -424,7 +508,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">单个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">多个参数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">node.js的下载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">开始安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.4.</span> <span class="nav-text">测试是否安装成功</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>

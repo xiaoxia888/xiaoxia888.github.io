@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="关于Mybatis底层参数的传递和@Param注释的使用">
+    <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="GuoXi">
     
     <title>
         
-            Mybatis底层参数传递 |
+            Hexo+GitHub个人博客搭建（3） |
         
         GuoXi&#39; Blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Mybatis底层参数传递</span>
+            <span class="title-hover-animation">Hexo+GitHub个人博客搭建（3）</span>
         </div>
 
         
@@ -149,19 +149,8 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-23 00:00:00
+        <i class="fas fa-edit"></i>&nbsp;2022-08-06 11:27:21
     </span>
-    
-        <span class="article-categories article-meta-item">
-            <i class="fas fa-folder"></i>&nbsp;
-            <ul>
-                
-                    <li>
-                        <a href="/categories/Javaweb/">Javaweb</a>&nbsp;
-                    </li>
-                
-            </ul>
-        </span>
     
     
 
@@ -177,30 +166,98 @@
         
 
         <div class="article-content markdown-body">
-            <h3>单个参数</h3>
+            <p>在前面我们已经完成了个人博客NOdejs和Git的安装，现在我们需要进行下面的一些操作。</p>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.POJO类型：直接使用，属性名和参数占位符名称一致</span><br><span class="line">2.Map集合：直接使用，键名和参数占位符名称一致</span><br><span class="line">3.collection集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,collection集合);</span><br><span class="line">    map.put(&quot;collection&quot;,collection集合);</span><br><span class="line">4.list集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,List集合);</span><br><span class="line">    map.put(&quot;collection&quot;,List集合);</span><br><span class="line">    map.put(&quot;list&quot;,list集合);</span><br><span class="line"> 5.Array：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,数组);</span><br><span class="line">    map.put(&quot;Array&quot;,数组);</span><br></pre></td></tr></table></figure>
+<h3>Hexo安装</h3>
 
-<h3>多个参数</h3>
+<p>win+R打开cmd窗口，并在其中输入以下代码</p>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">多个参数：mybatis会将这些参数封装为一个Map集合(param),@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">* map.put(&quot;arg0&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* map.put(&quot;arg1&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* map.put(&quot;@Param注解替换的键名&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* ap.put(&quot;@Param注解替换的键名&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+<P>当出现 <b>+ hexo-cli@4.3.0（后面的是版本号）</b>就说明Hexo安装成功。 </p>
 
-<p><strong>例如</strong></p>
-<p>xxxMapper.java</p>
+<p>输入hexo -v可以检测Hexo是否安装成功。</p>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">List&lt;Brand&gt; selectByCondition(int id,String companyName)</span><br><span class="line">使用@Param注释后</span><br><span class="line">List&lt;Brand&gt; selectByCondition(@Param(&quot;status&quot;) int id,@Param(&quot;companyName&quot;)String companyName)</span><br></pre></td></tr></table></figure>
+<h3>Github账户的注册</h3>
 
-<p>xxxMapper.xml</p>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">	select *</span><br><span class="line">	from tb_brand</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">	&lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">		status = #&#123;arg0&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg1!=null and arg1!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and company_name like #&#123;arg1&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg2!=null and arg2!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and brand_name like #&#123;arg2&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>从现在开始，我们博客搭建的工具已经全部安装成功，接下来我们将正式搭建我们的个人博客，首先我们需要创建一个Github账户。</p>
+<P>Github注册我这边就不详细的描述了，这边我推荐一个大佬的文章，他详细的介绍了Github注册和登录的方法，下面是他的博客。</p>
 
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释后</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">        select *</span><br><span class="line">        from tb_brand</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">        &lt;if test=&quot;status!=null&quot;&gt;</span><br><span class="line">             status = #&#123;status&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;companyName!=null and companyName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">             and company_name like #&#123;companyName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;brandName!=null and brandName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">            and brand_name like #&#123;brandName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p>  <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv5107169/"  >https://www.bilibili.com/read/cv5107169/<i class="fas fa-external-link-alt"></i></a></p>
+<hr>
+<h3>Github仓库的搭建</h3>
 
-<p>建议使用@Param注释，可以提高代码可读性</p>
+<P>当我们完成Github账户的注册我们来到了一个Github页面，我们需要建立一个Github仓库。Github仓库就像一个远程的服务器，来存储我们博客中的具体内容。</p>
+
+<p>接下来进入github个人首页，如下图所示。</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/01.png">
+
+<p>下面我们就要建立“仓库”用以储存我们的博客网站了！点击如上图中左边的“create repository”（如果你已经有仓库了，那么酒店左上角的“New”，或者点右上角“+”，里面有个“New repository”），进入下面的页面。这个页面里面一些设置要特别注意了！仓库的名字<b>（repository name）</b>一定要和自己的名字一模一样！而且一定要写成<b>yourname.github.io</b>的格式。不然后面没办法生成相应的github页面。</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/02.png">
+
+<p>这样仓库就建好了。每一个仓库都有自己的地址，如下图：</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/03.png">
+
+<h3>SSH Keys的生成</h3>
+
+<p>当我们的仓库也生成完成后，我们需要完成一个关联工作，将我们Github与本地经行一个绑定，这时候就需要到了我们的SSH。</p>
+
+<h5>1)什么是SSH？</h5>
+
+<p>简单说，SSH是一种网络协议，用于计算机之间的加密登录。如果一个用户从本地计算机，使用SSH协议登录另一台远程计算机，我们就可以认为，这种登录是安全的，即使被中途截获，密码也不会泄露。最早的时候，互联网通信都是明文通信，一旦被截获，内容就暴露无疑。1995年，芬兰学者Tatu  Ylonen设计了SSH协议，将登录信息全部加密，成为互联网安全的一个基本解决方案，迅速在全世界获得推广，目前已经成为Linux系统的标准配置。
+SSH只是一种协议，存在多种实现，既有商业实现，也有开源实现。</p>
+
+<h5>2)生成SSH Key</h5>
+
+<p>1，首先我们随便打开一个文件夹<b>（一定要是文件夹）</b>右键，我们可以看到一个<b>Git bush Here</b>，我们就进入到了Git页面：</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/04.png">
+
+<p>我们不要被这黑不溜秋的页面吓到，我们敲代码就行了。</p>
+<p>2，输入<span style="color:red"> ssh </span>会发现跳出一大串代码，应为ssh默认已经安装过了。</p>
+
+<p>接下来我们在命令框中输入以下代码：<b>（只需要改邮件地址就行了，剩下的不要动。）</b></p>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后就会出现：</p>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/电脑名/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+
+<p><b>注意在这里不要傻傻等着，需要我们回车。然后会出现：</b></p>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+
+<p>要求你输入密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。这个设置是防止别人往你的项目里提交内容，但就我个人的使用体验而言，还是不设置的好，否则的话每次上传都需要输入密码，很麻烦。</p>
+
+<p><b>注意：输入密码的时候没有*字样的，直接输入就好。然后会出现：</b></p>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">Your identification has been saved in /c/Users/电脑名/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved in /c/Users/电脑名/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">65:69:······02:4b emailname@email.com</span><br><span class="line">The key&#x27;s randomart image is:</span><br><span class="line">+--[ RSA 2048]----+</span><br><span class="line">|                 |</span><br><span class="line">|       .   o .   |</span><br><span class="line">|    . o o = o    |</span><br><span class="line">|   . o * = o     |</span><br><span class="line">|  E  o + o .     |</span><br><span class="line">| . o.   . .      |</span><br><span class="line">|     ..          |</span><br><span class="line">+-----------------+</span><br></pre></td></tr></table></figure>
+
+<p>至此，密钥已经成功生成。</p>
+
+<h5>3)在github上添加SSH key</h5>
+
+<ul><li>打开本地文件：id_rsa.pub（文件路径可以在上一步SSH生成成功后看到路径，比如我的是C:/Users/用户名/.ssh/id_rsa.pub），可以将这个文件在编辑器中打开，然后全选复制。</li>
+
+<p><b>注意：在打开id_rsa.pub文件时推荐用Notepad++打开，防止出现乱码。</b></p>
+
+<ul><li>    登陆github，点击头像位置处 Settings ——> SSH and GPG keys ——> New SSH key，点击新建SSH key。将id_rsa.pub中复制的内容粘贴在key文本框里，title可以不用填（或者自己起一个名字也可以）</li>
+
+<p>测试设置是否成功：</p>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p>出现warning没事，只有没有error就行。</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/05.png">
+
+<p>那么今天的个人博客搭建就到这里</p>
+
 
         </div>
 
@@ -212,18 +269,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/08/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%882%EF%BC%89/"
+                           href="/2022/08/06/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA%EF%BC%881%EF%BC%89/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Hexo+GitHub个人博客搭建（2）</span>
+                                <span class="post-nav-title-item">Hexo+GitHub个人博客搭建（1）</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/08/06/hello-world/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hello World</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
@@ -424,7 +496,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">单个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">多个参数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Hexo安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Github账户的注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Github仓库的搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">SSH Keys的生成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">4.0.1.</span> <span class="nav-text">1)什么是SSH？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">4.0.2.</span> <span class="nav-text">2)生成SSH Key</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">4.0.3.</span> <span class="nav-text">3)在github上添加SSH key</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>
