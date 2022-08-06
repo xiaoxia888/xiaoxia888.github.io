@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="关于Mybatis底层参数的传递和@Param注释的使用">
+    <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="GuoXi">
     
     <title>
         
-            Mybatis底层参数传递 |
+            机器学习之路——2 |
         
         GuoXi&#39; Blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Mybatis底层参数传递</span>
+            <span class="title-hover-animation">机器学习之路——2</span>
         </div>
 
         
@@ -149,7 +149,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-23 00:00:00
+        <i class="fas fa-edit"></i>&nbsp;2022-02-26 00:00:00
     </span>
     
         <span class="article-categories article-meta-item">
@@ -157,7 +157,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Javaweb/">Javaweb</a>&nbsp;
+                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;
                     </li>
                 
             </ul>
@@ -177,30 +177,50 @@
         
 
         <div class="article-content markdown-body">
-            <h3>单个参数</h3>
+            <h3>线性可分</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.POJO类型：直接使用，属性名和参数占位符名称一致</span><br><span class="line">2.Map集合：直接使用，键名和参数占位符名称一致</span><br><span class="line">3.collection集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,collection集合);</span><br><span class="line">    map.put(&quot;collection&quot;,collection集合);</span><br><span class="line">4.list集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,List集合);</span><br><span class="line">    map.put(&quot;collection&quot;,List集合);</span><br><span class="line">    map.put(&quot;list&quot;,list集合);</span><br><span class="line"> 5.Array：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,数组);</span><br><span class="line">    map.put(&quot;Array&quot;,数组);</span><br></pre></td></tr></table></figure>
+<h5>什么是线性可分？</h5>
 
-<h3>多个参数</h3>
+<p>例如所示二维图中</p><img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/88.png">
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">多个参数：mybatis会将这些参数封装为一个Map集合(param),@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">* map.put(&quot;arg0&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* map.put(&quot;arg1&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
 
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* map.put(&quot;@Param注解替换的键名&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* ap.put(&quot;@Param注解替换的键名&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
 
-<p><strong>例如</strong></p>
-<p>xxxMapper.java</p>
+<p>训练样本集中存在一条直线，可以将圆圈和差分开，那么训练样本集就线性可分</p>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">List&lt;Brand&gt; selectByCondition(int id,String companyName)</span><br><span class="line">使用@Param注释后</span><br><span class="line">List&lt;Brand&gt; selectByCondition(@Param(&quot;status&quot;) int id,@Param(&quot;companyName&quot;)String companyName)</span><br></pre></td></tr></table></figure>
+<h5>什么是非线性可分？</h5>
 
-<p>xxxMapper.xml</p>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/88.png">
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">	select *</span><br><span class="line">	from tb_brand</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">	&lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">		status = #&#123;arg0&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg1!=null and arg1!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and company_name like #&#123;arg1&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg2!=null and arg2!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and brand_name like #&#123;arg2&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>训练样本集中不存在一条直线，可以将圆圈和差分开，那么训练样本集就非线性可分</p>
 
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释后</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">        select *</span><br><span class="line">        from tb_brand</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">        &lt;if test=&quot;status!=null&quot;&gt;</span><br><span class="line">             status = #&#123;status&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;companyName!=null and companyName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">             and company_name like #&#123;companyName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;brandName!=null and brandName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">            and brand_name like #&#123;brandName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<h3>借助数学对线性可分和线性不可分做出定义</h3>
 
-<p>建议使用@Param注释，可以提高代码可读性</p>
+<p>当特征空间为2维时，如图：</p>
+
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/07.png">
+
+<p>两个维度分别用X<sub>1</sub>,X<sub>2</sub>表示</p>
+
+<p>假设：我们有N个训练样本和它们标签{(X<sub>1</sub>,Y<sub>1</sub>),(X<sub>2</sub>,Y<sub>2</sub>),...,(X<sub>N</sub>,Y<sub>N</sub>)}</p>
+
+<p align="center">其中X<sub>i</sub>&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;[X<sub>i1</sub>,X<sub>i2</sub>]<sup>T</sup></br>&nbsp;&nbsp;&nbsp;&nbsp;Y<sub>i</sub>&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;{+1,-1}</p>
+
+<p>我们规定，如果X<sub>i</sub>属于C<sub>1</sub>那么Y<sub>i</sub>=+1，如果X<sub>i</sub>属于C<sub>2</sub>那么Y<sub>i</sub>=-1</p>
+
+<p>线性可分的严格定义：一个训练样本集{(X<sub>1</sub>,Y<sub>1</sub>),(X<sub>2</sub>,Y<sub>2</sub>),...,(X<sub>N</sub>,Y<sub>N</sub>)}在i=1~N线性可分，是指在(w<sub>1</sub>，w<sub>1</sub>，b),使得对i=1~N,有：</p>
+
+<img style="height:100px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/10.png">
+
+<h5>用向量形式定义线性可分</h5>
+
+<p>假设：<img style="height:90px" src="https://cdn.jsdelivr.net/gh/xiaoxia888/myblog@master/imgchangkudajian/11.png"></p>
+
+<p>（1）若当y<sub>i</sub> =+1时，w<sup>T</sup>x<sub>i</sub>&nbsp;+&nbsp;b &gt; 0</p>
+<p>（2）若当y<sub>i</sub> =-1时，w<sup>T</sup>x<sub>i</sub>&nbsp;+&nbsp;b &lt; 0</p>
+<p>如果我们取y<sub>i</sub> =+1&nbsp;或&nbsp;-1，那么(1)和(2)可以统一为一个公式，即：</p>
+<p align="center">一个训练样本集{(X<sub>i</sub>,Y<sub>i</sub>)}，在i=1~N线性可分，是指存在(w,b)，使得对i=1~N，有：</br>Y<sub>i</sub>(w<sup>T</sup>X<sub>i</sub>&nbsp;+&nbsp;b)&nbsp;>&nbsp;0</p>
+
+<p>这就是线性可分最简单的定义。</p>
 
         </div>
 
@@ -212,13 +232,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/03/26/valueof%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                           href="/2022/03/05/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%94%E5%9F%BA%E4%BA%8E%E6%9C%80%E4%BC%98%E5%8C%96%E7%90%86%E8%AE%BA/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">valueof的使用</span>
+                                <span class="post-nav-title-item">机器学习——基于最优化理论</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -228,10 +248,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/03/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%94%E6%89%A9%E5%A4%A7%E5%8F%AF%E9%80%89%E5%87%BD%E6%95%B0%E7%9A%84%E8%8C%83%E5%9B%B4(2)/"
+                           href="/2022/02/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%941/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">机器学习——扩大可选函数的范围（2）</span>
+                                <span class="post-nav-title-item">机器学习之路——1</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -439,7 +459,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">单个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">多个参数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">线性可分</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是线性可分？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.2.</span> <span class="nav-text">什么是非线性可分？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">借助数学对线性可分和线性不可分做出定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">2.0.1.</span> <span class="nav-text">用向量形式定义线性可分</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>

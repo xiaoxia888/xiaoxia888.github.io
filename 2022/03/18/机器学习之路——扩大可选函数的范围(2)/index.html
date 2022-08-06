@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="关于Mybatis底层参数的传递和@Param注释的使用">
+    <meta name="description" content="Hexo Theme Keep">
     <meta name="author" content="GuoXi">
     
     <title>
         
-            Mybatis底层参数传递 |
+            机器学习——扩大可选函数的范围（2） |
         
         GuoXi&#39; Blog
     </title>
@@ -131,7 +131,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Mybatis底层参数传递</span>
+            <span class="title-hover-animation">机器学习——扩大可选函数的范围（2）</span>
         </div>
 
         
@@ -149,7 +149,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2022-03-23 00:00:00
+        <i class="fas fa-edit"></i>&nbsp;2022-03-18 00:00:00
     </span>
     
         <span class="article-categories article-meta-item">
@@ -157,7 +157,7 @@
             <ul>
                 
                     <li>
-                        <a href="/categories/Javaweb/">Javaweb</a>&nbsp;
+                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;
                     </li>
                 
             </ul>
@@ -177,30 +177,43 @@
         
 
         <div class="article-content markdown-body">
-            <h3>单个参数</h3>
+            <h3>什么是核函数？</h3>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.POJO类型：直接使用，属性名和参数占位符名称一致</span><br><span class="line">2.Map集合：直接使用，键名和参数占位符名称一致</span><br><span class="line">3.collection集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,collection集合);</span><br><span class="line">    map.put(&quot;collection&quot;,collection集合);</span><br><span class="line">4.list集合：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,List集合);</span><br><span class="line">    map.put(&quot;collection&quot;,List集合);</span><br><span class="line">    map.put(&quot;list&quot;,list集合);</span><br><span class="line"> 5.Array：mybatis会将其封装为Map集合,@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">    map.put(&quot;arg0&quot;,数组);</span><br><span class="line">    map.put(&quot;Array&quot;,数组);</span><br></pre></td></tr></table></figure>
+<p>核函数的定义:</p>
+<p>​     如果对于任意两个向量X<sub>1</sub>X<sub>2</sub>,我们知道K(X<sub>1</sub>,X<sub>2</sub>)=φ(X<sub>1</sub>)<sup>T</sup>φ(X<sub>2</sub>)。   </p>
+<p>​    那么我们可以通过一些技巧，获得测试样本X的类别信息，从而完成对测试样本类别的预测，在这里我们定义K(X<sub>1</sub>X<sub>2</sub>)为核函数，它是一个实数。 </p>
+<h5>核函数以及低维到高维的映射φ(X)的关系</h5>
 
-<h3>多个参数</h3>
+<p>例一：假设：φ (X)是一个将二维向量映射为三维向量的映射</p>
+<p align="center">X=[X<sub>1</sub>,X<sub>2</sub>]<sup>T</sup></br>
+φ(X)=φ([X<sub>1</sub>X<sub>2</sub>]<sup>T</sup></sup>)=[X<sub>1</sub><sup>2</sup>,X<sub>1</sub>X<sub>2</sub>,X<sub>2</sub><sup>2</sup>]</p>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">多个参数：mybatis会将这些参数封装为一个Map集合(param),@Param注解是用于替换Map集合中的arg键名</span><br><span class="line">* map.put(&quot;arg0&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* map.put(&quot;arg1&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+<p>假设有两个二维向量，分别为：</p>
+<p align="center">X<sub>1</sub> = [X<sub>1</sub>X<sub>1</sub>,X<sub>2</sub>X<sub>2</sub>]<sup>T</sup></br>X<sub>2 </sub>= [X<sub>2</sub>X<sub>1</sub>,X<sub>2</sub>X<sub>2</sub>]<sup>T</sup></p>
+
+<p>那么根据上面的定义</p>
+<p align="center">φ(X<sub>1</sub>)=[X<sub>11</sub><sup>2</sup>,X<sub>11</sub>X<sub>12</sub>,X<sub>12</sub><sup>2</sup>]</br>φ(X<sub>2</sub>)=[X<sub>21</sub><sup>2</sup>,X<sub>21</sub>X<sub>22</sub>,X<sub>22</sub><sup>2</sup>]</p>
+
+<p>则：</p>
+<img src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/13.png">
 
 <hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* map.put(&quot;@Param注解替换的键名&quot;,参数值1)</span><br><span class="line">* map.put(&quot;param1&quot;,参数值1)</span><br><span class="line">* ap.put(&quot;@Param注解替换的键名&quot;,参数值2)</span><br><span class="line">* map.put(&quot;param2&quot;,参数值2)</span><br></pre></td></tr></table></figure>
+<p>例二：(已知核函数K求映射φ的例子)</p>
+<p>假设：x是一个二维向量</p>
+<p align="center">X<sub>1</sub> = [X<sub>1</sub>X<sub>1</sub>,X<sub>2</sub>X<sub>2</sub>]<sup>T</sup>，X<sub>2 </sub>= [X<sub>2</sub>X<sub>1</sub>,X<sub>2</sub>X<sub>2</sub>]<sup>T</sup></p>
 
-<p><strong>例如</strong></p>
-<p>xxxMapper.java</p>
+<p>我们假设</p>
+<img height=100px src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/14.png">
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">List&lt;Brand&gt; selectByCondition(int id,String companyName)</span><br><span class="line">使用@Param注释后</span><br><span class="line">List&lt;Brand&gt; selectByCondition(@Param(&quot;status&quot;) int id,@Param(&quot;companyName&quot;)String companyName)</span><br></pre></td></tr></table></figure>
+<p>根据定义K(X<sub>1</sub>,X<sub>2</sub>)=φ(X<sub>1</sub>)<sup>T</sup>φ(X<sub>2</sub>)</p>
+<p>根据观察，假设X=[X<sub>1</sub>,X<sub>2</sub>]<sup>T</sup></p>
+<p>那么φ (X）将是下面这个五维向量的形式</p>
+<img height=70px src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/15.png">
 
-<p>xxxMapper.xml</p>
+<p>根据上面两个例子，我们可以看出<strong>核函数K和映射φ是一一对应的</strong></p>
+<p><strong>注意：核函数的形式不能随意的取，他需要满足一定的条件，才能分解为两个φ内积的形式积的形式</strong></p>
+<img height=100px src="https://cdn.jsdelivr.net/gh/xiaoxia888/images@main/imgs/16.png">
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释前</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">	select *</span><br><span class="line">	from tb_brand</span><br><span class="line">	&lt;where&gt;</span><br><span class="line">	&lt;if test=&quot;arg0!=null&quot;&gt;</span><br><span class="line">		status = #&#123;arg0&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg1!=null and arg1!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and company_name like #&#123;arg1&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;if test=&quot;arg2!=null and arg2!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">		and brand_name like #&#123;arg2&#125;</span><br><span class="line">	&lt;/if&gt;</span><br><span class="line">	&lt;/where&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">使用@Param注释后</span><br><span class="line">&lt;select id=&quot;selectByCondition&quot; resultMap=&quot;brandResultMap&quot;&gt;</span><br><span class="line">        select *</span><br><span class="line">        from tb_brand</span><br><span class="line">        &lt;where&gt;</span><br><span class="line">        &lt;if test=&quot;status!=null&quot;&gt;</span><br><span class="line">             status = #&#123;status&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;companyName!=null and companyName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">             and company_name like #&#123;companyName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;if test=&quot;brandName!=null and brandName!=&#x27;&#x27;&quot;&gt;</span><br><span class="line">            and brand_name like #&#123;brandName&#125;</span><br><span class="line">        &lt;/if&gt;</span><br><span class="line">        &lt;/where&gt;</span><br><span class="line">    &lt;/select&gt;</span><br></pre></td></tr></table></figure>
-
-<p>建议使用@Param注释，可以提高代码可读性</p>
 
         </div>
 
@@ -212,13 +225,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2022/03/26/valueof%E7%9A%84%E4%BD%BF%E7%94%A8/"
+                           href="/2022/03/23/Mybatis%E5%BA%95%E5%B1%82%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">valueof的使用</span>
+                                <span class="post-nav-title-item">Mybatis底层参数传递</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -228,10 +241,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/03/18/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%94%E6%89%A9%E5%A4%A7%E5%8F%AF%E9%80%89%E5%87%BD%E6%95%B0%E7%9A%84%E8%8C%83%E5%9B%B4(2)/"
+                           href="/2022/03/17/%E5%93%8D%E5%BA%94%E7%8A%B6%E6%80%81%E7%A0%81/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">机器学习——扩大可选函数的范围（2）</span>
+                                <span class="post-nav-title-item">响应状态码</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -439,7 +452,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">单个参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">多个参数</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">什么是核函数？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">1.0.1.</span> <span class="nav-text">核函数以及低维到高维的映射φ(X)的关系</span></a></li></ol></li></ol></li></ol>
     </div>
 </div>
         </aside>
